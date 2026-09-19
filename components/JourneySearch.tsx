@@ -1,9 +1,13 @@
+// components/JourneySearch.tsx
 "use client";
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import AccessibilityToggle from './AccessibilityToggle';
 
 export default function JourneySearch() {
+  const router = useRouter();
   const [activeModes, setActiveModes] = useState<string[]>(['Auto-Bus']);
+  const [isSearching, setIsSearching] = useState(false);
   
   const transitOptions = [
     {
@@ -48,6 +52,15 @@ export default function JourneySearch() {
     } else {
       setActiveModes([...activeModes, mode]);
     }
+  };
+
+  const handleSearch = () => {
+    setIsSearching(true);
+    
+    // Simulate Omni-AI calculating the optimal route before navigating
+    setTimeout(() => {
+      router.push('/route');
+    }, 800);
   };
 
   return (
@@ -97,8 +110,26 @@ export default function JourneySearch() {
         </div>
       </div>
 
-      <button className="w-full mt-2 primary-gradient hover:opacity-90 text-white font-bold py-4 rounded-2xl transition-opacity text-lg shadow-[0_8px_20px_rgba(45,212,191,0.3)]">
-        Find Routes
+      <button 
+        onClick={handleSearch}
+        disabled={isSearching}
+        className={`w-full mt-2 font-bold py-4 rounded-2xl transition-all duration-300 text-lg flex items-center justify-center gap-2 ${
+          isSearching 
+            ? 'bg-teal-700 text-white shadow-inner cursor-wait' 
+            : 'primary-gradient hover:opacity-90 text-white shadow-[0_8px_20px_rgba(45,212,191,0.3)]'
+        }`}
+      >
+        {isSearching ? (
+          <>
+            <span className="relative flex h-3 w-3">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-3 w-3 bg-white"></span>
+            </span>
+            Optimizing Grid...
+          </>
+        ) : (
+          'Find Routes'
+        )}
       </button>
     </div>
   );

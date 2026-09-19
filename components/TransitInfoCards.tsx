@@ -61,6 +61,7 @@ export default function TransitInfoCards() {
                 src={mode.image}
                 alt={mode.name}
                 fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
                 className="object-cover group-hover:opacity-90 transition-opacity"
               />
             </div>
@@ -75,13 +76,20 @@ export default function TransitInfoCards() {
 
       {/* Modal / Pop-up */}
       {selectedMode && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-gray-900/40 backdrop-blur-sm animate-[fadeIn_0.2s_ease-out]">
-          <div className="soft-card w-full max-w-lg relative overflow-hidden animate-[slideUp_0.3s_ease-out] flex flex-col">
+        <div 
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-gray-900/40 backdrop-blur-sm animate-[fadeIn_0.2s_ease-out]"
+          onClick={() => setSelectedMode(null)} // 1. Closes when clicking the blurred background
+        >
+          <div 
+            className="soft-card w-full max-w-lg relative overflow-hidden animate-[slideUp_0.3s_ease-out] flex flex-col cursor-default"
+            onClick={(e) => e.stopPropagation()} // 2. Prevents closing when clicking inside the actual card
+          >
             <div className="relative w-full h-48 bg-gray-100">
               <Image
                 src={selectedMode.image}
                 alt={selectedMode.name}
                 fill
+                sizes="(max-width: 768px) 100vw, 512px"
                 className="object-cover"
               />
               <button
