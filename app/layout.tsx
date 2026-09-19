@@ -2,6 +2,7 @@
 import { Inter } from 'next/font/google';
 import './globals.css';
 import NavBar from '@/components/NavBar';
+import OmniAIAssistant from '@/components/OmniAIAssistant';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -21,6 +22,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <main className="w-full mx-auto pt-24 pb-28 md:pb-6 flex flex-col min-h-dvh">
           {children}
         </main>
+
+        {/* Global Floating AI Assistant */}
+        <OmniAIAssistant />
       </body>
     </html>
   );
