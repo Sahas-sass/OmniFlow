@@ -1,38 +1,27 @@
 @import "tailwindcss";
 
 body {
-  /* Brighter, glowing futuristic mesh background instead of solid dark */
-  background-color: #0f172a;
+  background-color: #F8FAFC;
+  /* Luminous teal and mint mesh glows for light mode */
   background-image: 
-    radial-gradient(at 0% 0%, hsla(220,100%,50%,0.2) 0px, transparent 50%),
-    radial-gradient(at 100% 0%, hsla(189,100%,56%,0.2) 0px, transparent 50%),
-    radial-gradient(at 50% 50%, hsla(240,100%,70%,0.15) 0px, transparent 50%);
+    radial-gradient(at 0% 0%, rgba(45, 212, 191, 0.15) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, rgba(52, 211, 153, 0.15) 0px, transparent 50%),
+    radial-gradient(at 50% 50%, rgba(56, 189, 248, 0.1) 0px, transparent 50%);
   background-attachment: fixed;
-  color: #F8FAFC; 
+  color: #111827;
 }
 
-/* Enhanced Glassmorphism: Brighter borders, stronger blur, lighter fill */
-.glass-panel {
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-top: 1px solid rgba(255, 255, 255, 0.35); /* Creates a subtle top-light reflection */
-  border-left: 1px solid rgba(255, 255, 255, 0.35);
-  border-radius: 1.25rem;
-  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.3);
+/* Light-mode Glassmorphism */
+.soft-card {
+  background: rgba(255, 255, 255, 0.55); /* High transparency to let the glows through */
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-radius: 1.5rem;
+  /* Drop shadow for depth, inset shadow for surface reflection */
+  box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.9); /* Crisp border to separate from the background */
 }
 
-/* Glassmorphic Buttons */
-.glass-button {
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  transition: all 0.3s ease;
-}
-
-.glass-button:hover {
-  background: rgba(255, 255, 255, 0.15);
-  border-color: rgba(6, 182, 212, 0.5); /* Cyan glow on hover */
-  transform: translateY(-2px);
+.primary-gradient {
+  background: linear-gradient(135deg, #2DD4BF 0%, #34D399 100%);
 }

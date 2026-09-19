@@ -3,7 +3,7 @@ import { useState } from 'react';
 import AccessibilityToggle from './AccessibilityToggle';
 
 export default function JourneySearch() {
-  const [activeModes, setActiveModes] = useState<string[]>(['Auto-Bus', 'Mag-Train']);
+  const [activeModes, setActiveModes] = useState<string[]>(['Auto-Bus']);
   const allModes = ['Auto-Bus', 'Mag-Train', 'Air-Transit', 'Smart Road'];
 
   const toggleMode = (mode: string) => {
@@ -15,42 +15,43 @@ export default function JourneySearch() {
   };
 
   return (
-    <div className="glass-panel p-6 md:p-8 w-full max-w-md mx-auto flex flex-col shadow-2xl">
-      <h2 className="text-2xl font-bold text-white tracking-wide mb-5">Plan Your Journey</h2>
+    <div className="soft-card p-6 md:p-8 w-full max-w-md mx-auto flex flex-col gap-6 relative z-10">
       
-      <AccessibilityToggle />
-
-      <div className="space-y-5">
-        <div className="flex flex-col gap-2">
-          <label className="text-sm font-semibold text-slate-200">Current Location</label>
+      {/* Search Inputs */}
+      <div className="space-y-4">
+        <div className="flex flex-col gap-1.5">
+          <label className="text-sm font-bold text-gray-700 ml-1">Current Location</label>
           <input 
             type="text" 
             placeholder="e.g. Sector 4, Neo-Colombo" 
-            className="w-full bg-[#0B0F19]/60 border border-slate-500/50 rounded-xl px-4 py-3.5 text-white placeholder-slate-400 focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 transition-all text-base"
+            className="w-full bg-gray-50 border-none rounded-2xl px-5 py-4 text-gray-900 font-medium placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-teal-400 transition-all shadow-inner"
           />
         </div>
         
-        <div className="flex flex-col gap-2">
-          <label className="text-sm font-semibold text-slate-200">Destination</label>
+        <div className="flex flex-col gap-1.5">
+          <label className="text-sm font-bold text-gray-700 ml-1">Destination</label>
           <input 
             type="text" 
             placeholder="e.g. Aero-Hub District 9" 
-            className="w-full bg-[#0B0F19]/60 border border-slate-500/50 rounded-xl px-4 py-3.5 text-white placeholder-slate-400 focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 transition-all text-base"
+            className="w-full bg-gray-50 border-none rounded-2xl px-5 py-4 text-gray-900 font-medium placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-teal-400 transition-all shadow-inner"
           />
         </div>
       </div>
 
-      <div className="pt-6">
-        <label className="text-sm font-semibold text-slate-200 mb-3 block">Include Transit Modes</label>
-        <div className="flex flex-wrap gap-2.5">
+      <AccessibilityToggle />
+
+      {/* Transit Modes - Styled like pill tags */}
+      <div>
+        <label className="text-sm font-bold text-gray-700 ml-1 mb-3 block">Transit Modes</label>
+        <div className="flex flex-wrap gap-2">
           {allModes.map((mode) => (
             <button 
               key={mode} 
               onClick={() => toggleMode(mode)}
-              className={`px-4 py-2 rounded-full text-sm font-bold transition-all border ${
+              className={`px-5 py-2.5 rounded-full text-sm font-bold transition-all ${
                 activeModes.includes(mode) 
-                  ? 'bg-cyan-500/20 border-cyan-400 text-cyan-300' 
-                  : 'bg-white/5 border-white/10 text-slate-300 hover:bg-white/10'
+                  ? 'bg-gray-900 text-white shadow-md' 
+                  : 'bg-white text-gray-500 border border-gray-200 hover:bg-gray-50'
               }`}
             >
               {mode}
@@ -59,7 +60,7 @@ export default function JourneySearch() {
         </div>
       </div>
 
-      <button className="w-full mt-8 bg-[#0066FF] hover:bg-[#0052CC] text-white font-bold py-4 rounded-xl transition-colors text-lg shadow-[0_0_20px_rgba(0,102,255,0.4)]">
+      <button className="w-full mt-2 primary-gradient hover:opacity-90 text-white font-bold py-4 rounded-2xl transition-opacity text-lg shadow-[0_8px_20px_rgba(45,212,191,0.3)]">
         Find Routes
       </button>
     </div>
