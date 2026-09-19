@@ -52,7 +52,7 @@ export default function Home() {
               </h1>
             </div>
 
-            {/* Typography Section (Matched to reference) */}
+            {/* Typography Section */}
             <span className="inline-block text-[9px] sm:text-[10px] font-extrabold tracking-[0.2em] uppercase text-teal-700 bg-teal-50 border border-teal-100/60 px-4 py-1.5 rounded-full mb-5 shadow-sm">
               Neo-Colombo 2100
             </span>
@@ -69,7 +69,7 @@ export default function Home() {
             </p>
 
             {/* Floating 3D City Asset with Glassmorphic Elements */}
-            <div className="relative w-full max-w-[340px] aspect-square mx-auto lg:mx-0 mt-4 mb-8">
+            <div className="relative w-full max-w-85 aspect-square mx-auto lg:mx-0 mt-4 mb-8">
               
               {/* Main Image */}
               <div className="absolute inset-0 animate-float z-10">
