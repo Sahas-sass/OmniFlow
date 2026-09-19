@@ -46,7 +46,7 @@ export default function NavBar() {
           
           {/* Brand / Logo */}
           <Link href="/" className="flex items-center gap-2.5">
-            <div className="relative w-9 h-9 flex-shrink-0 drop-shadow-sm">
+            <div className="relative w-9 h-9 shrink-0 drop-shadow-sm">
               <Image
                 src="/logo.png"
                 alt="OmniFlow Logo"

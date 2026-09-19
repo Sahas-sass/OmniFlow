@@ -4,7 +4,43 @@ import AccessibilityToggle from './AccessibilityToggle';
 
 export default function JourneySearch() {
   const [activeModes, setActiveModes] = useState<string[]>(['Auto-Bus']);
-  const allModes = ['Auto-Bus', 'Mag-Train', 'Air-Transit', 'Smart Road'];
+  
+  const transitOptions = [
+    {
+      name: 'Auto-Bus',
+      icon: (
+        <svg className="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <rect x="4" y="7" width="16" height="10" rx="2" ry="2" strokeWidth={2} />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 12h16M8 17v2M16 17v2" />
+        </svg>
+      )
+    },
+    {
+      name: 'Mag-Train',
+      icon: (
+        <svg className="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <rect x="5" y="5" width="14" height="10" rx="2" ry="2" strokeWidth={2} />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v5M9 20h6" />
+        </svg>
+      )
+    },
+    {
+      name: 'Air-Transit',
+      icon: (
+        <svg className="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3l8 17-8-4-8 4 8-17z" />
+        </svg>
+      )
+    },
+    {
+      name: 'Smart Road',
+      icon: (
+        <svg className="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 4L3 7v14l6-3 6 3 6-3V4l-6 3-6-3zM9 4v14M15 7v14" />
+        </svg>
+      )
+    }
+  ];
 
   const toggleMode = (mode: string) => {
     if (activeModes.includes(mode)) {
@@ -24,7 +60,7 @@ export default function JourneySearch() {
           <input 
             type="text" 
             placeholder="e.g. Sector 4, Neo-Colombo" 
-            className="w-full bg-gray-50 border-none rounded-2xl px-5 py-4 text-gray-900 font-medium placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-teal-400 transition-all shadow-inner"
+            className="w-full bg-gray-50/70 border border-gray-100 rounded-2xl px-5 py-4 text-gray-900 font-medium placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-teal-400 transition-all"
           />
         </div>
         
@@ -33,28 +69,29 @@ export default function JourneySearch() {
           <input 
             type="text" 
             placeholder="e.g. Aero-Hub District 9" 
-            className="w-full bg-gray-50 border-none rounded-2xl px-5 py-4 text-gray-900 font-medium placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-teal-400 transition-all shadow-inner"
+            className="w-full bg-gray-50/70 border border-gray-100 rounded-2xl px-5 py-4 text-gray-900 font-medium placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-teal-400 transition-all"
           />
         </div>
       </div>
 
       <AccessibilityToggle />
 
-      {/* Transit Modes - Styled like pill tags */}
+      {/* Transit Modes - Styled with icons */}
       <div>
         <label className="text-sm font-bold text-gray-700 ml-1 mb-3 block">Transit Modes</label>
-        <div className="flex flex-wrap gap-2">
-          {allModes.map((mode) => (
+        <div className="flex flex-wrap gap-2.5">
+          {transitOptions.map((option) => (
             <button 
-              key={mode} 
-              onClick={() => toggleMode(mode)}
-              className={`px-5 py-2.5 rounded-full text-sm font-bold transition-all ${
-                activeModes.includes(mode) 
-                  ? 'bg-gray-900 text-white shadow-md' 
-                  : 'bg-white text-gray-500 border border-gray-200 hover:bg-gray-50'
+              key={option.name} 
+              onClick={() => toggleMode(option.name)}
+              className={`flex items-center gap-2 px-4 py-2.5 rounded-full text-sm font-bold transition-all ${
+                activeModes.includes(option.name) 
+                  ? 'bg-gray-900 text-white shadow-md border border-gray-900' 
+                  : 'bg-white text-gray-500 border border-gray-100 hover:bg-gray-50 hover:border-gray-200'
               }`}
             >
-              {mode}
+              {option.icon}
+              {option.name}
             </button>
           ))}
         </div>

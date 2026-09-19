@@ -9,7 +9,7 @@ export default function Home() {
       <div className="w-full lg:w-1/2 flex flex-col items-center lg:items-start text-center lg:text-left">
         {/* Brand Icon and Text */}
         <div className="flex items-center gap-3.5 mb-6 justify-center lg:justify-start">
-          <div className="relative w-12 h-12 flex-shrink-0 drop-shadow-md">
+          <div className="relative w-12 h-12 shrink-0 drop-shadow-md">
             <Image
               src="/logo.png"
               alt="OmniFlow Logo"
