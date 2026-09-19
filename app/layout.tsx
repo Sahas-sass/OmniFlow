@@ -17,8 +17,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {/* The global navigation bar */}
         <NavBar />
         
-        {/* Responsive container with top padding to account for the fixed NavBar */}
-        <main className="w-full mx-auto pt-24 pb-6 flex flex-col min-h-screen">
+        {/* Responsive container with padding for top header and mobile bottom bar */}
+        <main className="w-full mx-auto pt-24 pb-28 md:pb-6 flex flex-col min-h-dvh">
           {children}
         </main>
       </body>
