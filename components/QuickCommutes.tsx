@@ -44,8 +44,8 @@ export default function QuickCommutes() {
         </button>
       </div>
 
-      {/* Horizontal Scrolling Container - Scrollbar firmly hidden */}
-      <div className="flex gap-4 overflow-x-auto pb-4 pt-1 px-1 scrollbar-hide snap-x [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+      {/* Horizontal Scrolling Container - Updated with canonical scrollbar-none */}
+      <div className="flex gap-4 overflow-x-auto pb-4 pt-1 px-1 scrollbar-hide snap-x [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] scrollbar-none">
         {commutes.map((route) => (
           <button 
             key={route.id}
