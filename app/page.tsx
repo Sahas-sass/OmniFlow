@@ -1,5 +1,6 @@
 import JourneySearch from '@/components/JourneySearch';
 import TransitInfoCards from '@/components/TransitInfoCards';
+import CityPulse from '@/components/CityPulse';
 import Image from 'next/image';
 
 export default function Home() {
@@ -51,6 +52,9 @@ export default function Home() {
       </div>
       
       </div>
+
+      {/* City Pulse Board */}
+      <CityPulse />
 
       {/* New Transit Grid Section */}
       <TransitInfoCards />
