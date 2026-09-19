@@ -7,12 +7,18 @@ export default function Home() {
       
       {/* Left Column: 3D Asset & Branding */}
       <div className="w-full lg:w-1/2 flex flex-col items-center lg:items-start text-center lg:text-left">
-        <div className="flex items-center gap-3 mb-6">
-          {/* Placeholder for an app logo */}
-          <div className="w-10 h-10 rounded-xl primary-gradient shadow-md flex items-center justify-center">
-            <span className="text-white font-bold text-xl">O</span>
+        {/* Brand Icon and Text */}
+        <div className="flex items-center gap-3.5 mb-6 justify-center lg:justify-start">
+          <div className="relative w-12 h-12 flex-shrink-0 drop-shadow-md">
+            <Image
+              src="/logo.png"
+              alt="OmniFlow Logo"
+              fill
+              className="object-contain"
+              priority
+            />
           </div>
-          <h1 className="text-3xl font-extrabold tracking-tight text-gray-900">
+          <h1 className="text-3xl md:text-4xl font-extrabold tracking-tighter text-gray-900">
             OmniFlow
           </h1>
         </div>

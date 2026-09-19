@@ -2,6 +2,7 @@
 "use client";
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import Image from 'next/image';
 
 export default function NavBar() {
   const pathname = usePathname();
@@ -44,11 +45,17 @@ export default function NavBar() {
         <div className="max-w-6xl mx-auto soft-card px-5 py-3 flex items-center justify-between pointer-events-auto">
           
           {/* Brand / Logo */}
-          <Link href="/" className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg primary-gradient flex items-center justify-center shadow-md">
-              <span className="text-white font-bold text-sm">O</span>
+          <Link href="/" className="flex items-center gap-2.5">
+            <div className="relative w-9 h-9 flex-shrink-0 drop-shadow-sm">
+              <Image
+                src="/logo.png"
+                alt="OmniFlow Logo"
+                fill
+                className="object-contain"
+                priority
+              />
             </div>
-            <span className="font-extrabold text-gray-900 tracking-tight">
+            <span className="font-extrabold text-gray-900 text-xl tracking-tight hidden sm:block">
               OmniFlow
             </span>
           </Link>
