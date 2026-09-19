@@ -1,114 +1,161 @@
-// app/route/page.tsx
+// app/active-journey/page.tsx (or your respective component file)
+"use client";
 import Link from 'next/link';
+import Image from 'next/image';
 
-export default function RouteDetails() {
+export default function ActiveJourney() {
   return (
-    <div className="w-full max-w-3xl mx-auto flex flex-col gap-6 px-4">
+    <div className="w-full max-w-md mx-auto px-4 sm:px-6 pt-6 pb-12 relative min-h-screen bg-gray-50/50">
       
-      {/* Header & Back Navigation */}
-      <div className="flex items-center justify-between pt-4">
-        <Link href="/" className="w-10 h-10 rounded-full bg-white shadow-md flex items-center justify-center hover:bg-gray-50 transition-colors border border-gray-100">
-          <span className="text-gray-900 font-bold text-xl leading-none">&larr;</span>
+      {/* Header */}
+      <div className="flex items-center justify-center relative mb-6">
+        <Link href="/" className="absolute left-0 w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-sm border border-gray-100 hover:bg-gray-50 transition-colors z-10">
+          <span className="font-bold text-gray-600">&larr;</span>
         </Link>
-        <h1 className="text-xl font-extrabold text-gray-900">Active Journey</h1>
-        <div className="w-10 h-10" />
+        <h1 className="text-lg font-extrabold text-gray-900">Active Journey</h1>
       </div>
 
-      {/* Real-time Alert Banner */}
-      <div className="bg-red-50 border border-red-100 rounded-2xl p-4 flex gap-4 items-start shadow-sm">
-        <div className="w-8 h-8 rounded-full bg-red-500 flex items-center justify-center shrink-0 shadow-md">
-          <span className="text-white font-bold">!</span>
+      {/* 3D Isometric Map Visual */}
+      <div className="relative w-full h-48 sm:h-56 mb-6 rounded-3xl overflow-hidden shadow-sm border border-gray-200/60 group">
+        <Image 
+          src="/route-3d.jpg" 
+          alt="3D Route Map" 
+          fill 
+          className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+          priority
+        />
+        {/* Soft bottom gradient to blend into the page */}
+        <div className="absolute inset-0 bg-gradient-to-t from-gray-50/90 via-transparent to-transparent"></div>
+        
+        {/* Floating pulse indicator on the map */}
+        <div className="absolute bottom-4 right-6 flex items-center gap-2 bg-white/80 backdrop-blur-md px-3 py-1.5 rounded-full border border-white shadow-sm">
+           <span className="relative flex h-2.5 w-2.5">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-teal-400 opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-teal-500"></span>
+          </span>
+          <span className="text-[10px] font-extrabold text-gray-900 uppercase tracking-wider">Live</span>
+        </div>
+      </div>
+
+      {/* Glassmorphic Alert */}
+      <div className="bg-red-50/80 backdrop-blur-md border border-red-100 rounded-2xl p-4 flex gap-3 mb-5 shadow-sm">
+        <div className="w-6 h-6 shrink-0 bg-red-500 rounded-full flex items-center justify-center text-white font-bold text-sm shadow-sm">
+          !
         </div>
         <div>
-          <h3 className="text-red-900 font-bold text-sm">Air-Transit Delay</h3>
-          <p className="text-red-700 text-xs font-medium mt-1">
+          <h4 className="text-sm font-extrabold text-red-900 mb-0.5">Air-Transit Delay</h4>
+          <p className="text-xs font-medium text-red-700 leading-relaxed">
             High winds at District 9. Mag-Train alternative has been automatically pre-booked at no extra cost.
           </p>
         </div>
       </div>
 
-      {/* Route Summary Stats */}
-      <div className="soft-card p-6 flex justify-between items-center relative z-10">
-        <div className="text-center">
-          <span className="block text-gray-400 text-xs font-bold uppercase tracking-wider mb-1">Time</span>
-          <span className="text-2xl font-extrabold text-gray-900">42 <span className="text-sm">min</span></span>
+      {/* Stats Card */}
+      <div className="soft-card p-5 flex justify-between items-center mb-6 divide-x divide-gray-100 text-center">
+        <div className="flex-1">
+          <span className="block text-[10px] uppercase font-bold text-gray-400 mb-1">Time</span>
+          <div className="text-2xl font-extrabold text-gray-900">42 <span className="text-sm">min</span></div>
         </div>
-        <div className="w-px h-10 bg-gray-200"></div>
-        <div className="text-center">
-          <span className="block text-gray-400 text-xs font-bold uppercase tracking-wider mb-1">Cost</span>
-          <span className="text-2xl font-extrabold text-gray-900">2.40 <span className="text-sm">Cr</span></span>
+        <div className="flex-1">
+          <span className="block text-[10px] uppercase font-bold text-gray-400 mb-1">Cost</span>
+          <div className="text-2xl font-extrabold text-gray-900">2.40 <span className="text-sm">Cr</span></div>
         </div>
-        <div className="w-px h-10 bg-gray-200"></div>
-        <div className="text-center">
-          <span className="block text-gray-400 text-xs font-bold uppercase tracking-wider mb-1">Access</span>
-          <span className="text-2xl font-extrabold text-teal-500">100%</span>
+        <div className="flex-1">
+          <span className="block text-[10px] uppercase font-bold text-gray-400 mb-1">Access</span>
+          <div className="text-2xl font-extrabold text-teal-500">100%</div>
         </div>
       </div>
 
-      {/* Unified Transit Timeline */}
-      <div className="soft-card p-6 sm:p-8 relative z-10">
-        <h2 className="text-lg font-bold text-gray-900 mb-6">Route Steps</h2>
+      {/* Route Steps Timeline */}
+      <div className="soft-card p-6 relative overflow-hidden mb-8">
+        <h3 className="text-sm font-extrabold text-gray-900 mb-6 relative z-10">Route Steps</h3>
         
-        <div className="relative border-l-2 border-gray-100 ml-4 space-y-8">
+        <div className="relative z-10 flex flex-col gap-6">
           
-          {/* Step 1: Walk */}
-          <div className="relative pl-8">
-            {/* Updated class: -left-2.75 */}
-            <div className="absolute -left-2.75 top-1 w-5 h-5 rounded-full bg-gray-200 border-4 border-white shadow-sm" />
-            <div className="flex justify-between items-start">
-              <div>
-                <h4 className="font-bold text-gray-900">Walk to Sector 4 Hub</h4>
-                <p className="text-sm text-gray-500 font-medium">Level pathways, 400m</p>
+          {/* Connecting Line Background (Gray) */}
+          <div className="absolute left-[15px] top-10 bottom-4 w-[2px] bg-gray-100 -z-10"></div>
+          {/* Connecting Line Active (Teal) */}
+          <div className="absolute left-[15px] top-10 h-16 w-[2px] bg-teal-400 -z-10"></div>
+
+          {/* Step 1: Walk (Completed) */}
+          <div className="flex gap-4 items-start">
+            <div className="w-8 h-8 rounded-full bg-teal-50 border-2 border-white flex items-center justify-center shrink-0 shadow-sm mt-0.5">
+              <div className="w-2.5 h-2.5 bg-gray-300 rounded-full"></div>
+            </div>
+            <div className="flex-1">
+              <div className="flex justify-between items-center mb-0.5">
+                <h4 className="font-extrabold text-sm text-gray-900">Walk to Sector 4 Hub</h4>
+                <span className="text-xs font-bold text-gray-400">09:00</span>
               </div>
-              <span className="text-sm font-bold text-gray-400">09:00</span>
+              <p className="text-xs font-medium text-gray-500">Level pathways, 400m</p>
             </div>
           </div>
 
-          {/* Step 2: Auto-Bus */}
-          <div className="relative pl-8">
-            {/* Updated class: -left-3.25 */}
-            <div className="absolute -left-3.25 top-1 w-6 h-6 rounded-full primary-gradient border-4 border-white shadow-md flex items-center justify-center" />
-            <div className="flex justify-between items-start">
-              <div>
-                <h4 className="font-bold text-gray-900">Auto-Bus (Line C)</h4>
-                <p className="text-sm text-teal-600 font-bold bg-teal-50 inline-block px-2 py-0.5 rounded-md mt-1">Wheelchair Ramp Deployed</p>
+          {/* Step 2: Auto-Bus (ACTIVE - Pulsing) */}
+          <div className="flex gap-4 items-start">
+            <div className="relative w-8 h-8 flex items-center justify-center shrink-0 mt-0.5">
+              <span className="absolute w-8 h-8 bg-teal-400 rounded-full animate-ping opacity-40"></span>
+              <div className="relative w-8 h-8 bg-teal-400 text-white rounded-full flex items-center justify-center shadow-md">
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <rect x="4" y="7" width="16" height="10" rx="2" ry="2" strokeWidth={2} />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 12h16M8 17v2M16 17v2" />
+                </svg>
               </div>
-              <span className="text-sm font-bold text-gray-900">09:08</span>
+            </div>
+            <div className="flex-1">
+              <div className="flex justify-between items-center mb-0.5">
+                <h4 className="font-extrabold text-sm text-gray-900">Auto-Bus (Line C)</h4>
+                <span className="text-xs font-bold text-gray-900">09:08</span>
+              </div>
+              <div className="inline-flex items-center gap-1.5 mt-1.5 bg-teal-50 text-teal-700 text-[10px] font-extrabold uppercase tracking-wide px-2.5 py-1 rounded-md border border-teal-100">
+                <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm-1 5h2v6l3.5 3.5-1.4 1.4-3.6-3.6v-3.3l-2.7 2.7c-.4.4-1 .4-1.4 0-.4-.4-.4-1 0-1.4l3.6-3.6V7z"/></svg>
+                Wheelchair Ramp Deployed
+              </div>
             </div>
           </div>
 
-          {/* Step 3: Mag-Train */}
-          <div className="relative pl-8">
-             {/* Updated class: -left-3.25 */}
-             <div className="absolute -left-3.25 top-1 w-6 h-6 rounded-full bg-gray-900 border-4 border-white shadow-md flex items-center justify-center" />
-            <div className="flex justify-between items-start">
-              <div>
-                <h4 className="font-bold text-gray-900">Mag-Train (Express)</h4>
-                <p className="text-sm text-gray-500 font-medium mt-1">Platform 2 &rarr; Platform 4</p>
+          {/* Step 3: Mag-Train (Upcoming) */}
+          <div className="flex gap-4 items-start">
+            <div className="w-8 h-8 rounded-full bg-gray-900 text-white flex items-center justify-center shrink-0 shadow-sm mt-0.5">
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <rect x="5" y="5" width="14" height="10" rx="2" ry="2" strokeWidth={2} />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v5M9 20h6" />
+              </svg>
+            </div>
+            <div className="flex-1">
+              <div className="flex justify-between items-center mb-0.5">
+                <h4 className="font-extrabold text-sm text-gray-900">Mag-Train (Express)</h4>
+                <span className="text-xs font-bold text-gray-500">09:22</span>
               </div>
-              <span className="text-sm font-bold text-gray-900">09:22</span>
+              <p className="text-xs font-medium text-gray-500">Platform 2 &rarr; Platform 4</p>
             </div>
           </div>
 
-          {/* Step 4: Destination */}
-          <div className="relative pl-8">
-            {/* Updated class: -left-2.75 */}
-            <div className="absolute -left-2.75 top-1 w-5 h-5 rounded-full bg-teal-400 border-4 border-white shadow-sm" />
-            <div className="flex justify-between items-start">
-              <div>
-                <h4 className="font-bold text-gray-900">Arrive at Aero-Hub</h4>
-                <p className="text-sm text-gray-500 font-medium">District 9</p>
+          {/* Step 4: Arrive (Upcoming) */}
+          <div className="flex gap-4 items-start">
+            <div className="w-8 h-8 rounded-full bg-gray-100 border-2 border-white flex items-center justify-center shrink-0 shadow-sm mt-0.5 z-10">
+              <div className="w-2.5 h-2.5 bg-teal-400 rounded-full"></div>
+            </div>
+            <div className="flex-1">
+              <div className="flex justify-between items-center mb-0.5">
+                <h4 className="font-extrabold text-sm text-gray-900">Arrive at Aero-Hub</h4>
+                <span className="text-xs font-bold text-gray-500">09:42</span>
               </div>
-              <span className="text-sm font-bold text-gray-400">09:42</span>
+              <p className="text-xs font-medium text-gray-500">District 9</p>
             </div>
           </div>
 
         </div>
       </div>
 
-      <Link href="/tracking" className="w-full mt-2 primary-gradient hover:opacity-90 text-white text-center font-bold py-4 rounded-2xl transition-opacity text-lg shadow-[0_8px_20px_rgba(45,212,191,0.3)] block">
+      {/* Standard Document Flow Button (No longer fixed) */}
+      <button className="w-full block primary-gradient text-white font-bold py-4 rounded-2xl shadow-[0_8px_20px_rgba(45,212,191,0.3)] hover:opacity-90 transition-opacity text-lg flex items-center justify-center gap-2">
+        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+        </svg>
         Start Live Tracking
-      </Link>
+      </button>
 
     </div>
   );
