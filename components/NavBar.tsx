@@ -42,7 +42,8 @@ export default function NavBar() {
     <>
       {/* 1. TOP HEADER (Visible on all screens) */}
       <header className="fixed top-0 left-0 right-0 z-50 px-4 py-4 pointer-events-none">
-        <div className="max-w-6xl mx-auto soft-card px-5 py-3 flex items-center justify-between pointer-events-auto">
+        {/* Added 'relative' here to anchor the absolute centered pill */}
+        <div className="max-w-6xl mx-auto soft-card px-5 py-3 flex items-center justify-between pointer-events-auto shadow-[0_8px_30px_rgba(0,0,0,0.04)] border border-white/60 bg-white/75 backdrop-blur-xl rounded-2xl relative">
           
           {/* Brand / Logo */}
           <Link href="/" className="flex items-center gap-2.5">
@@ -59,6 +60,17 @@ export default function NavBar() {
               OmniFlow
             </span>
           </Link>
+
+          {/* NEW: Mobile-Only Center Grid Status Pill to fill the empty space */}
+          <div className="absolute left-1/2 -translate-x-1/2 flex md:hidden items-center gap-2 bg-gray-50/80 backdrop-blur-sm border border-gray-200/60 px-3 py-1.5 rounded-full shadow-inner">
+            <span className="relative flex h-1.5 w-1.5">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-teal-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-teal-500"></span>
+            </span>
+            <span className="text-[9px] font-mono font-bold text-gray-500 tracking-widest uppercase">
+              Grid Optimal
+            </span>
+          </div>
 
           {/* Desktop Links (Hidden on Mobile) */}
           <div className="hidden md:flex gap-2 lg:gap-4">
@@ -81,16 +93,21 @@ export default function NavBar() {
           </div>
 
           {/* Profile / Settings */}
-          <div className="w-8 h-8 rounded-full bg-gray-100 border border-gray-200 overflow-hidden flex items-center justify-center">
-             <span className="text-xs text-gray-500 font-bold">U</span>
-          </div>
+          <Link 
+            href="/profile"
+            className="w-10 h-10 rounded-full bg-gray-50/80 backdrop-blur-sm flex items-center justify-center shadow-[0_2px_10px_rgba(0,0,0,0.05)] border-2 border-white/50 hover:scale-105 transition-transform"
+          >
+            <span className="text-lg font-black text-transparent bg-clip-text bg-linear-to-br from-blue-600 to-orange-400">
+              U
+            </span>
+          </Link>
 
         </div>
       </header>
 
       {/* 2. BOTTOM TAB BAR (Visible ONLY on Mobile) */}
       <nav className="md:hidden fixed bottom-6 left-4 right-4 z-50">
-        <div className="soft-card px-2 py-2 flex items-center justify-around shadow-[0_10px_40px_rgba(0,0,0,0.1)]">
+        <div className="soft-card px-2 py-2 flex items-center justify-around shadow-[0_10px_40px_rgba(0,0,0,0.1)] bg-white/90 backdrop-blur-xl border border-gray-100 rounded-3xl">
           {navLinks.map((link) => {
             const isActive = pathname === link.path;
             return (
