@@ -11,7 +11,7 @@ export default function RouteDetails() {
           <span className="text-gray-900 font-bold text-xl leading-none">&larr;</span>
         </Link>
         <h1 className="text-xl font-extrabold text-gray-900">Active Journey</h1>
-        <div className="w-10 h-10" /> {/* Spacer for centering */}
+        <div className="w-10 h-10" />
       </div>
 
       {/* Real-time Alert Banner */}
@@ -53,7 +53,8 @@ export default function RouteDetails() {
           
           {/* Step 1: Walk */}
           <div className="relative pl-8">
-            <div className="absolute -left-[11px] top-1 w-5 h-5 rounded-full bg-gray-200 border-4 border-white shadow-sm" />
+            {/* Updated class: -left-2.75 */}
+            <div className="absolute -left-2.75 top-1 w-5 h-5 rounded-full bg-gray-200 border-4 border-white shadow-sm" />
             <div className="flex justify-between items-start">
               <div>
                 <h4 className="font-bold text-gray-900">Walk to Sector 4 Hub</h4>
@@ -65,7 +66,8 @@ export default function RouteDetails() {
 
           {/* Step 2: Auto-Bus */}
           <div className="relative pl-8">
-            <div className="absolute -left-[13px] top-1 w-6 h-6 rounded-full primary-gradient border-4 border-white shadow-md flex items-center justify-center" />
+            {/* Updated class: -left-3.25 */}
+            <div className="absolute -left-3.25 top-1 w-6 h-6 rounded-full primary-gradient border-4 border-white shadow-md flex items-center justify-center" />
             <div className="flex justify-between items-start">
               <div>
                 <h4 className="font-bold text-gray-900">Auto-Bus (Line C)</h4>
@@ -77,7 +79,8 @@ export default function RouteDetails() {
 
           {/* Step 3: Mag-Train */}
           <div className="relative pl-8">
-             <div className="absolute -left-[13px] top-1 w-6 h-6 rounded-full bg-gray-900 border-4 border-white shadow-md flex items-center justify-center" />
+             {/* Updated class: -left-3.25 */}
+             <div className="absolute -left-3.25 top-1 w-6 h-6 rounded-full bg-gray-900 border-4 border-white shadow-md flex items-center justify-center" />
             <div className="flex justify-between items-start">
               <div>
                 <h4 className="font-bold text-gray-900">Mag-Train (Express)</h4>
@@ -89,7 +92,8 @@ export default function RouteDetails() {
 
           {/* Step 4: Destination */}
           <div className="relative pl-8">
-            <div className="absolute -left-[11px] top-1 w-5 h-5 rounded-full bg-teal-400 border-4 border-white shadow-sm" />
+            {/* Updated class: -left-2.75 */}
+            <div className="absolute -left-2.75 top-1 w-5 h-5 rounded-full bg-teal-400 border-4 border-white shadow-sm" />
             <div className="flex justify-between items-start">
               <div>
                 <h4 className="font-bold text-gray-900">Arrive at Aero-Hub</h4>

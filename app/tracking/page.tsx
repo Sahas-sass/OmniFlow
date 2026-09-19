@@ -12,7 +12,7 @@ export default function LiveTracking() {
         </Link>
         <h1 className="text-xl font-extrabold text-gray-900">Live Map</h1>
         <div className="w-10 h-10 rounded-full bg-white shadow-md flex items-center justify-center border border-gray-100">
-           {/* Heart/Favorite Icon placeholder from the mockup */}
+           {/* Heart/Favorite Icon placeholder */}
            <span className="text-gray-400 font-bold text-sm">♡</span>
         </div>
       </div>
@@ -25,26 +25,25 @@ export default function LiveTracking() {
             backgroundSize: '40px 40px' 
         }}></div>
 
-        {/* Route Line (Dashed red line like the mockup) */}
+        {/* Route Line */}
         <svg className="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
           <path d="M 50 80 Q 150 120, 200 250 T 350 400" fill="transparent" stroke="#EF4444" strokeWidth="4" strokeDasharray="8 8" />
         </svg>
 
         {/* Origin Pin */}
-        <div className="absolute top-[60px] left-[30px] w-12 h-12 rounded-full border-4 border-white shadow-lg overflow-hidden bg-gray-300">
-           {/* Replace with an actual image of the city later if needed */}
+        <div className="absolute top-15 left-7.5 w-12 h-12 rounded-full border-4 border-white shadow-lg overflow-hidden bg-gray-300">
            <div className="w-full h-full bg-teal-200 object-cover flex items-center justify-center text-xs font-bold text-teal-800">Start</div>
         </div>
 
         {/* Current Location Pin (The vehicle) */}
-        <div className="absolute top-[220px] left-[180px] w-14 h-14 rounded-2xl bg-white shadow-xl border-2 border-teal-400 flex items-center justify-center z-10 animate-pulse">
+        <div className="absolute top-55 left-45 w-14 h-14 rounded-2xl bg-white shadow-xl border-2 border-teal-400 flex items-center justify-center z-10 animate-pulse">
            <div className="w-8 h-8 rounded-full primary-gradient flex items-center justify-center shadow-inner">
              <span className="text-white text-xs font-bold">Pod</span>
            </div>
         </div>
 
         {/* Destination Pin */}
-        <div className="absolute top-[370px] left-[330px]">
+        <div className="absolute top-92.5 left-82.5">
           <div className="w-8 h-8 rounded-full bg-red-500 border-4 border-white shadow-lg flex items-center justify-center">
             <div className="w-2 h-2 rounded-full bg-white"></div>
           </div>
@@ -66,7 +65,7 @@ export default function LiveTracking() {
         {/* Progress Bar */}
         <div className="w-full h-3 bg-gray-100 rounded-full overflow-hidden mb-6 shadow-inner">
           <div className="h-full primary-gradient rounded-full w-[80%] relative">
-             <div className="absolute top-0 right-0 bottom-0 left-0 bg-[linear-gradient(45deg,rgba(255,255,255,0.2)_25%,transparent_25%,transparent_50%,rgba(255,255,255,0.2)_50%,rgba(255,255,255,0.2)_75%,transparent_75%,transparent)] bg-[length:1rem_1rem] animate-[progress_1s_linear_infinite]"></div>
+             <div className="absolute top-0 right-0 bottom-0 left-0 bg-[linear-gradient(45deg,rgba(255,255,255,0.2)_25%,transparent_25%,transparent_50%,rgba(255,255,255,0.2)_50%,rgba(255,255,255,0.2)_75%,transparent_75%,transparent)] bg-size-[1rem_1rem] animate-[progress_1s_linear_infinite]"></div>
           </div>
         </div>
 
