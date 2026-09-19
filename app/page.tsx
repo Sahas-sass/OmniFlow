@@ -1,9 +1,12 @@
 import JourneySearch from '@/components/JourneySearch';
+import TransitInfoCards from '@/components/TransitInfoCards';
 import Image from 'next/image';
 
 export default function Home() {
   return (
-    <div className="w-full max-w-6xl mx-auto flex-1 flex flex-col lg:flex-row items-center justify-center gap-10 lg:gap-20 py-8 px-4 sm:px-6 min-h-[90vh]">
+    <div className="w-full flex-1 flex flex-col items-center">
+      {/* Existing Hero Section */}
+      <div className="w-full max-w-6xl mx-auto flex flex-col lg:flex-row items-center justify-center gap-10 lg:gap-20 py-8 px-4 sm:px-6 min-h-[80vh]">
       
       {/* Left Column: 3D Asset & Branding */}
       <div className="w-full lg:w-1/2 flex flex-col items-center lg:items-start text-center lg:text-left">
@@ -47,6 +50,10 @@ export default function Home() {
         <JourneySearch />
       </div>
       
+      </div>
+
+      {/* New Transit Grid Section */}
+      <TransitInfoCards />
     </div>
   );
 }
